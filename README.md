@@ -340,7 +340,6 @@ takeown /f 'C:\Department Shares\Private\IT\cred.txt'
 # Modifying ACL if needed
 icacls 'C:\Department Shares\Private\IT\cred.txt' /grant htb-student:F
 ```
-
 # Arsenal
 ## TMUX
 ```bash
@@ -380,7 +379,6 @@ prefix + [Shift + O]
 ```
 ## Python Virtual Environment
 ```bash
-
 python3 -m venv /.venv
 
 source venv/bin/activate
