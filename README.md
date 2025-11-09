@@ -27,7 +27,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 - [Privilege Escalation](#privilege-escalation)
   - [Linux PE](#linux-pe)
   - [Windows PE](#windows-pe)
-  - [Arsenal](#arsenal)
+- [Arsenal](#arsenal)
   - [TMUX](#tmux)
   - [Python Virtual Environment](#python-virtual-enviroment)
   - [File Transfers](#file-transfers)
