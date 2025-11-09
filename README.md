@@ -3,9 +3,10 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 
 
 ## Table of Contents
-- - [Enumeration](#enumeration)
+- [Enumeration](#enumeration)
   - [Network Scanning](#network-scanning)
   - [Web Enumeration](#web-enumeration)
+    - [Directory Scanning](#directory-scanning)
 - [Exploitation](#exploitation)
 - [Privilege Escalation](#privilege-escalation)
 - [Post-Exploitation](#post-exploitation)
@@ -16,5 +17,27 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 ## Enumeration
 Details about network scanning, service discovery, and host identification.
 
-##Network-Scanning
-Test
+### Network-Scanning
+nmap service scan
+```bash
+nmap -sCV -T4 -p- TARGET -oN test_scan.txt
+```
+nmap udp scan
+```bash
+namp -sU TARGET --top-ports 100 --min-rate 5000 -oN test_scanudp.txt
+```
+rustscan with nmap
+```bash
+rustscan -a TARGET -- -sV -sC -oN nmap_output.txt
+```
+
+## Web Enumeration
+Details about Web Enumeration and vulnerability discovery.
+#### Directory Scanning
+FFUF
+```bash
+ffuf -w ~/Wordlists/SecLists/Discovery/xx:FUZZ -u http://94.23.x.x:80/FUZZ
+```
+Dirsearch
+```bash
+dirsearch -h http://TARGET/
