@@ -298,6 +298,9 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 # Arsenal
 ## TMUX
 ```bash
+# Cleaner name format
+crlt + alt + p
+
 # Start a new tmux session
 tmux new -s <name>
 
