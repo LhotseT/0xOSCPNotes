@@ -40,6 +40,9 @@ getTGT.py -dc-ip <IP> 'domain.dc/USER:PASS'
 # Setting klist
 export KRB5CCNAME=Olivia.ccache
 klist
+
+# SMB Shares as USER
+sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k --share
 ```
 ## Bloodhound
 ```bash
