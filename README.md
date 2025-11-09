@@ -1,12 +1,6 @@
 # 0xOSCPNotes
 Enumeration, exploitation, and privilege escalation notes, all in one place.
 
-## Useful Sites
-- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
-- [HackTricks](https://book.hacktricks.wiki/en/index.html)
-- [PentestBook](https://pentestbook.six2dez.com/)
-- [CPTS-CheatSheet](https://github.com/zagnox/CPTS-cheatsheet)
-
 ## Table of Contents
 - [Enumeration](#enumeration)
   - [Network Scanning](#network-scanning)
@@ -27,6 +21,14 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 - [Privilege Escalation](#privilege-escalation)
 - [Post-Exploitation](#post-exploitation)
 - [Resources](#resources)
+
+
+## Useful Sites
+- [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
+- [HackTricks](https://book.hacktricks.wiki/en/index.html)
+- [PentestBook](https://pentestbook.six2dez.com/)
+- [CPTS-CheatSheet](https://github.com/zagnox/CPTS-cheatsheet)
+
 
 ---
 
