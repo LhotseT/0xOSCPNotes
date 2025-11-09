@@ -6,7 +6,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 - [Enumeration](#enumeration)
   - [Network Scanning](#network-scanning)
   - [Web Enumeration](#web-enumeration)
-    - [Directory Scanning](#directory-scanning)
+    - [Web Scanning](#web-scanning)
 - [Exploitation](#exploitation)
 - [Privilege Escalation](#privilege-escalation)
 - [Post-Exploitation](#post-exploitation)
@@ -33,11 +33,25 @@ rustscan -a TARGET -- -sV -sC -oN nmap_output.txt
 
 ## Web Enumeration
 Details about Web Enumeration and vulnerability discovery.
-#### Directory Scanning
-FFUF
+#### Web Scanning
+FFUF directory scan
 ```bash
-ffuf -w ~/Wordlists/SecLists/Discovery/xx:FUZZ -u http://94.23.x.x:80/FUZZ
+ffuf -w ~/Wordlists/SecLists/Discovery/xx:FUZZ -u http://TARGET:x/FUZZ
 ```
-Dirsearch
+FFUF vHost scan
+```bash
+ffuf -u http://TARGET.x -c -w ~/Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.TARGET.x' -fs 0 
+```
+
+Dirsearch directory scan
 ```bash
 dirsearch -h http://TARGET/
+```
+Nikto Scan
+```bash
+nikto -h http://TARGET/
+```
+cewl crawling pages for wordlists
+```bash
+cewl -d 5 -m 3 http://TARGET/ > TARGET.txt
+```
