@@ -1,7 +1,7 @@
 # 0xOSCPNotes
 Enumeration, exploitation, and privilege escalation notes, all in one place.
 
-# Useful Sites
+## Useful Sites
 - [PayloadsAllTheThings](https://github.com/swisskyrepo/PayloadsAllTheThings)
 - [HackTricks](https://book.hacktricks.wiki/en/index.html)
 - [PentestBook](https://pentestbook.six2dez.com/)
@@ -119,7 +119,7 @@ mysql -h <IP> -u <USER> -p --skip-ssl
 ```bash
 impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
 ```
-# Exploitation
+## Exploitation
 ## Attacking Common Services
 ### Attacking SMB
 ```bash
