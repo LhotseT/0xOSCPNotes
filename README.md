@@ -298,8 +298,7 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```
 ## Windows PE
 ### Privileges
-```cmd
-
+```bash
 # Lists user privileges
 whoami /priv
 
