@@ -30,8 +30,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 
 ---
 
-## Enumeration
-Details about network scanning, service discovery, and host identification.
+# Enumeration
 
 ### Network-Scanning
 nmap service scan
@@ -119,7 +118,7 @@ mysql -h <IP> -u <USER> -p --skip-ssl
 ```bash
 impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
 ```
-## Exploitation
+# Exploitation
 ## Attacking Common Services
 ### Attacking SMB
 ```bash
