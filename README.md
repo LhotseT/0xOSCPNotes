@@ -1,4 +1,4 @@
-# 0xOSCPNotes
+# 0xOSCP Notes
 Enumeration, exploitation, and privilege escalation notes, all in one place.
 
 ## Table of Contents
