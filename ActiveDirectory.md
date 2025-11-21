@@ -28,6 +28,10 @@ sudo rdate -n 10.129.152.17
 
 # Username creation and enumeration
 enum4linux -U <IP>  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
+
+# Lookup Users SIDs
+lookupsid.py retro2.vl/anonymous@10.129.51.196 -no-pass | grep SidTypeUsers
+
 ```
 ## Kerberos
 ```bash
