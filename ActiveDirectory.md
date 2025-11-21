@@ -43,6 +43,7 @@ klist
 
 # SMB Shares as USER
 sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k --shares
+
 ```
 ## Bloodhound
 ```bash
@@ -54,6 +55,7 @@ netexec ldap DC.domain.dc -u USER -p 'PASS' --bloodhound -c All --dns-server <IP
 
 # Collect as Kerberosed USER
 bloodhound-python -u 'USER' -p 'PASS' -d domain.dc -c All -o bloodhound_results.json -ns <IP> -k
+zip domainbh.zip *.json 
 ```
 # Exploitation
 ## DCSync Attack
