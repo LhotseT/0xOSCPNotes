@@ -42,7 +42,7 @@ export KRB5CCNAME=Olivia.ccache
 klist
 
 # SMB Shares as USER
-sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k --share
+sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k --shares
 ```
 ## Bloodhound
 ```bash
