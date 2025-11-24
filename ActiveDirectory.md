@@ -32,6 +32,9 @@ enum4linux -U <IP>  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
 # Lookup Users SIDs
 lookupsid.py retro2.vl/anonymous@10.129.51.196 -no-pass | grep SidTypeUsers
 
+# RDP
+xfreerdp3 /u:ADMWS01$ /p:'SomePassword' /v:10.129.165.197 /sec:rdp /cert:ignore
+
 ```
 ## Kerberos
 ```bash
