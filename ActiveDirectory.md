@@ -1,4 +1,4 @@
-# Active Directory Notes
+# Active Directory / Windows Notes
 Enumeration, exploitation, and privilege escalation notes, all in one place.
 
 ## Table of Contents
