@@ -35,6 +35,9 @@ lookupsid.py retro2.vl/anonymous@10.129.51.196 -no-pass | grep SidTypeUsers
 # RDP
 xfreerdp3 /u:ADMWS01$ /p:'SomePassword' /v:10.129.165.197 /sec:rdp /cert:ignore
 
+# No bruteforcing, password:password
+nxc smb domain.dc -u users -p users --no-bruteforce --continue-on-success
+
 ```
 ## Kerberos
 ```bash
