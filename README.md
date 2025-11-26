@@ -63,8 +63,11 @@ rustscan -a <IP> -- -sV -sC -oN nmap_output.txt
 # FFUF directory scan
 ffuf -w ~/Wordlists/SecLists/Discovery/xx:FUZZ -u http://<IP>:x/FUZZ
 
-# FFUF vHost scan
+# FFUF SubDomain scan
 ffuf -u http://<IP>.x -c -w ~/Wordlists/SecLists/Discovery/DNS/subdomains-top1million-5000.txt -H 'HOST: FUZZ.<IP>.x' -fs 0 
+
+# FFUF vHost scan
+ffuf -c -w ~/Wordlists/SubDFuzz/subdbig.txt:FUZZ -u http://FUZZ.x.x/
 
 # Dirsearch directory scan
 dirsearch -h http://<IP>/
