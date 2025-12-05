@@ -122,6 +122,9 @@ dig any <domain.tld> @<nameserver>
 dig axfr <domain.tld> @<nameserver>
 ```
 ### SQL
+SQLI Injection commands
+https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Generic-SQLi.txt
+
 mysql (add end method if TSL/SSL error appears)
 ```bash
 mysql -h <IP> -u <USER> -p --skip-ssl
