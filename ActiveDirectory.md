@@ -25,6 +25,8 @@ sudo nxc smb <IP> -u USER -p '' --rid-brute
 
 # Matching the system dates 
 sudo rdate -n 10.129.152.17
+# If the above command fails
+sudo timedatectl set-time "<rdate result>"
 
 # Username creation and enumeration
 enum4linux -U <IP>  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
