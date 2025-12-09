@@ -40,6 +40,8 @@ xfreerdp3 /u:ADMWS01$ /p:'SomePassword' /v:10.129.165.197 /sec:rdp /cert:ignore
 # No bruteforcing, password:password
 nxc smb domain.dc -u users -p users --no-bruteforce --continue-on-success
 
+# Checking for accounts STATUS_PASSWORD_MUST_CHANGE
+nxc smb sendai.vl -u usernames.txt -p '' --continue-on-success
 ```
 ## Kerberos
 ```bash
