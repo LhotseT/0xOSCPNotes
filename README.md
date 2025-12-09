@@ -101,6 +101,11 @@ rpcclient -U "" <IP>
 
 # Enumerating SMB shares using null session authentication.
 crackmapexec smb <IP> --shares -u '' -p '' --shares
+
+# Downloading everything with smbclient
+recurse ON
+prompt OFF
+mget *
 ```
 ### NFS
 ```bash
