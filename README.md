@@ -75,6 +75,9 @@ dirsearch -h http://<IP>/
 
 # Nikto scan
 nikto -h http://<IP>/
+
+# Check the following for tech stack information
+/proc/self/environ
 ```
 ## Footprinting
 ### FTP
