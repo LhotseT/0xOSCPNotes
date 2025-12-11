@@ -29,6 +29,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
   - [Linux PE](#linux-pe)
   - [Windows PE](#windows-pe)
 - [Arsenal](#arsenal)
+  - [BURP](#burp)
   - [TMUX](#tmux)
   - [Python Virtual Environment](#python-virtual-enviroment)
   - [File Transfers](#file-transfers)
@@ -422,6 +423,17 @@ Get-ChildItem HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss | %{Get-ItemP
 
 
 # Arsenal
+## BURP
+```bash
+# Fixing burp certificates
+Visit http://burp using pwnfox and select CA Certificate in the top right.
+Once downloaded head to FireFox settings and search Certificates and import it.
+
+# BLOODHOUND CLASH
+netstat -lntp | grep 8080
+sudo kill <ID>
+```
+
 ## TMUX
 ```bash
 # Cleaner name format
