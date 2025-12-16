@@ -419,6 +419,8 @@ takeown /f 'C:\Department Shares\Private\IT\cred.txt'
 # Modifying ACL if needed
 icacls 'C:\Department Shares\Private\IT\cred.txt' /grant htb-student:F
 ```
+Don't forget to use SysinternalsSuite
+
 ### Windows Subsystem Enumeration
 ```bash
 Get-ChildItem HKCU:\Software\Microsoft\Windows\CurrentVersion\Lxss | %{Get-ItemProperty $_.PSPath} | out-string -width 4096
