@@ -76,7 +76,11 @@ netexec ldap DC.domain.dc -u USER -p 'PASS' --bloodhound -c All --dns-server <IP
 
 # Collect as Kerberosed USER
 bloodhound-python -u 'USER' -p 'PASS' -d domain.dc -c All -o bloodhound_results.json -ns <IP> -k
-zip domainbh.zip *.json 
+zip domainbh.zip *.json
+
+# KILL BLOODHOUND
+sudo fuser -k 8080/tcp
+sudo ss -lntp | grep 8080
 ```
 # Exploitation
 ```bash
