@@ -457,6 +457,12 @@ sudo kill <ID>
 
 ## TMUX
 ```bash
+Adding executables to PATH
+echo 'export PATH=$PATH:/usr/share/doc/python3-impacket/examples' >> ~/.zshrc
+source ~/.zshrc 
+```
+```bash
+
 # Cleaner name format
 crlt + alt + p
 
