@@ -364,6 +364,9 @@ find /usr/bin /usr/sbin /usr/local/bin /usr/local/sbin -type f -exec getcap {} \
 # Search for User specific executables and files
 find / -user USER -perm -u=wrx 2>/dev/null
 
+# Search for running processes as root
+ps auxww | grep root
+
 # Check for Permissions
 ls -l /
 ```
