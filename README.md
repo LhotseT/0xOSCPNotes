@@ -508,6 +508,11 @@ source venv/bin/activate
 
 deactivate
 ```
+Using python2 to install packages. Get pip2
+```bash
+curl https://bootstrap.pypa.io/pip/2.7/get-pip.py -o get-pip.py
+```
+
 ## File Transfers
 ### Windows SMB
 ```bash
