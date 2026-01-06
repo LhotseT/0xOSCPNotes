@@ -356,6 +356,9 @@ ls -la -R
 # Search for file types
 find . -type f -iname '*db*' -print
 
+# Searching for Username in files
+grep -Ri 'USER' .
+
 # Search for writable files
 find / -writable -type d 2>/dev/null
 
