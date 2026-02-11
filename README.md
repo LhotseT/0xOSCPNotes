@@ -409,6 +409,9 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```bash
 # List passwords in credential manager
 cmdkey /list
+
+# Search for string in
+findstr /SIM /C:"pass" *.ini *.cfg *.config *.xml
 ```
 ```bash
 # Lists user privileges
