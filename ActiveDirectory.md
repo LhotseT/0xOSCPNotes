@@ -91,6 +91,11 @@ pypykatz registry --sam sam system
 pypykatz lsa minidump lsass.DMP
 ```
 
+## Certipy Enumeration
+```bash
+./certipy.exe find /vulnerable /currentuser
+```
+
 ## DCSync Attack
 ```bash
 # PowerView tool used to view the group membership of a specific user (adunn) in a target Windows domain. Performed from a Windows-based host.
