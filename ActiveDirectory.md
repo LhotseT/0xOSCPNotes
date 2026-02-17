@@ -91,9 +91,10 @@ pypykatz registry --sam sam system
 pypykatz lsa minidump lsass.DMP
 ```
 
-## Certipy Enumeration
+## Certify Enumeration
+https://github.com/Flangvik/SharpCollection/tree/master/NetFramework_4.7_Any
 ```bash
-./certipy.exe find /vulnerable /currentuser
+./certify.exe find /vulnerable /currentuser
 ```
 
 ## DCSync Attack
