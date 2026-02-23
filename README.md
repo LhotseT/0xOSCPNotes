@@ -526,6 +526,14 @@ tmux kill-session -a
 tmux a
 tmux a -t <name>
 
+#PREFIX IS CTRL B
+
+# New Session
+Prefix + :
+
+# Switch Session
+Prefix + s
+
 # start/stop logging with tmux logger
 prefix + [Shift + P]
 
