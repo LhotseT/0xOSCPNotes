@@ -540,6 +540,15 @@ v to highlight
 y to copy
 prefix + ] to paste
 
+Move left/right by character	h / l
+Move left/right by word	w / b / e
+Move up/down by line	k / j
+Move screenful up/down	Ctrl+b then PageUp/PageDown (or Ctrl+u / Ctrl+d in copy mode)
+Jump to start/end of line	0 / $
+Jump to start/end of buffer	g / G
+Search forward/backward	/ / ? (like Vim)
+Repeat last search	n / N
+
 # start/stop logging with tmux logger
 prefix + [Shift + P]
 
