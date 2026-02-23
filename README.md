@@ -540,6 +540,12 @@ v to highlight
 y to copy
 prefix + ] to paste
 
+# Search for Words
+? forward search
+/ backward search
+n N to cycle through
+
+
 Move left/right by character	h / l
 Move left/right by word	w / b / e
 Move up/down by line	k / j
