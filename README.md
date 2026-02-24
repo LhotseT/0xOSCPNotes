@@ -91,6 +91,10 @@ nc -nv <IP> <PORT>
 
 # Download all available files on the target FTP server
 wget -m --no-passive ftp://anonymous:anonymous@<IP>
+
+# Turn off passive mode
+passive
+
 ```
 ### SMB
 ```bash
