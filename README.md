@@ -41,6 +41,7 @@ Enumeration, exploitation, and privilege escalation notes, all in one place.
 - [HackTricks](https://book.hacktricks.wiki/en/index.html)
 - [PentestBook](https://pentestbook.six2dez.com/)
 - [CPTS-CheatSheet](https://github.com/zagnox/CPTS-cheatsheet)
+- [AD-CheatSheet](https://github.com/scwscw1/OSCP-Active-Directory-Exploitation-Cheat-Sheet.git)
 
 
 ---
