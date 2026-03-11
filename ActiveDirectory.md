@@ -94,6 +94,22 @@ pypykatz registry --sam sam system
 # Pypkayz to dump lsass
 pypykatz lsa minidump lsass.DMP
 ```
+# Password list Example
+Hokkaido2023
+Aerospace2023
+hokkaido2023
+Winter2023
+Summer2023
+Spring2023
+Fall2023
+info
+administrator
+discovery
+maintenance
+ofni
+rotartsinimda
+yrevocsid
+ecnanetniam
 
 ## Certify Enumeration
 https://github.com/Flangvik/SharpCollection/tree/master/NetFramework_4.7_Any
