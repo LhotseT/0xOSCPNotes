@@ -43,6 +43,9 @@ nxc smb domain.dc -u users -p users --no-bruteforce --continue-on-success
 
 # Checking for accounts STATUS_PASSWORD_MUST_CHANGE
 nxc smb sendai.vl -u usernames.txt -p '' --continue-on-success
+
+# User Enumeration
+└─$ ./kerbrute_linux_386 userenum -d hokkaido-aerospace.com --dc 192.168.164.40 ~/Wordlists/Usernames/xato.txt -t 100 
 ```
 ## Kerberos
 ```bash
