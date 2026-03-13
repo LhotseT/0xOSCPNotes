@@ -90,6 +90,8 @@ sudo ss -lntp | grep 8080
 ```bash
 # Searching for files in a users home directory like AppDAta
 dir /s/b *.log
+
+Run secretsdump
 ```
 
 ```bash
