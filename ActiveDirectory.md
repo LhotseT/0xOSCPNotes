@@ -86,7 +86,12 @@ zip domainbh.zip *.json
 sudo fuser -k 8080/tcp
 sudo ss -lntp | grep 8080
 ```
-# Exploitation
+# Post Exploitation
+```bash
+# Searching for files in a users home directory like AppDAta
+dir /s/b *.log
+```
+
 ```bash
 # Pypykatz to dump registry sam system
 pypykatz registry --sam sam system
