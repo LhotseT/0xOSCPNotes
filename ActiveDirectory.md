@@ -29,8 +29,8 @@ sudo rdate -n 10.129.152.17
 # If the above command fails
 sudo timedatectl set-time "<rdate result>"
 
-# Username creation and enumeration
-enum4linux -U <IP>  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
+# Username creation and enumeration. USE BOTH NG AND NORMAL
+enum4linux-ng -U <IP>  | grep "user:" | cut -f2 -d"[" | cut -f1 -d"]"
 
 # Lookup Users SIDs
 lookupsid.py retro2.vl/anonymous@10.129.51.196 -no-pass | grep SidTypeUsers
