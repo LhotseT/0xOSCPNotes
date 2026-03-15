@@ -92,6 +92,14 @@ sudo ss -lntp | grep 8080
 dir /s/b *.log
 
 Run secretsdump
+
+# Internal IP search
+ipconfig
+arp -a
+route print
+
+# Scan internal range
+nmap 10.x.x.0/24
 ```
 
 ```bash
